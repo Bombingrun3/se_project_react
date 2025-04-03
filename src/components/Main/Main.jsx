@@ -3,9 +3,14 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 
 function Main() {
   return (
-    <section className="main">
+    <main className="main">
       <WeatherCard />
-    </section>
+      <section className="cards">
+        <p className="cards__title">
+          Today is 75&deg; F / You may want to wear:
+        </p>
+      </section>
+    </main>
   );
 }
 
