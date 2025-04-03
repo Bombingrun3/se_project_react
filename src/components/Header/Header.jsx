@@ -9,7 +9,7 @@ function Header() {
       <p className="header__date-location">April 01, Evansville</p>
       <button className="header__add-clothes-button">+ Add Clothes</button>
       <div className="header__user-container">
-        <p className="header__username">Username</p>
+        <p className="header__username">Terrence Tegegne</p>
         <img
           className="header__avatar"
           alt="Terrence Tegegne"

@@ -1,3 +1,16 @@
+import "./WeatherCard.css";
+import sunnyDay from "../../assets/sunny-day.svg";
+
+function WeatherCard() {
+  return (
+    <section className="weathercard">
+      <img className="weathercard__image" alt="Sunny Day" src={sunnyDay}></img>
+    </section>
+  );
+}
+
+export default WeatherCard;
+
 // The WeatherCard receives data from its parent
 // (props chain example: App → Main → WeatherCard).
 // The weather data itself can be a big object, but we only need
