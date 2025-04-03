@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+}
+
+.header__logo {
+}
+
+.header__date-location {
+}
+
+.header__add-clothes-button {
+}
+
+.header__user-container {
+  display: flex;
+}
+
+.header__username {
+}
+
+.header__avatar {
+}
