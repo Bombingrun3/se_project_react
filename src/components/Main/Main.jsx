@@ -9,6 +9,7 @@ function Main() {
         <p className="cards__title">
           Today is 75&deg; F / You may want to wear:
         </p>
+        <div className="cards__gallery"></div>
       </section>
     </main>
   );

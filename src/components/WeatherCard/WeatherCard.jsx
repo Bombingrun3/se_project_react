@@ -4,7 +4,8 @@ import sunnyDay from "../../assets/sunny-day.svg";
 function WeatherCard() {
   return (
     <section className="weathercard">
-      <img className="weathercard__image" alt="Sunny Day" src={sunnyDay}></img>
+      <p className="weathercard__temp">75&deg; F</p>
+      <img className="weathercard__image" alt="Sunny Day" src={sunnyDay} />
     </section>
   );
 }
