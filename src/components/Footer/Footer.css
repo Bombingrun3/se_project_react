@@ -1,0 +1,13 @@
+.footer {
+  padding-top: 85px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__author {
+  margin: 0;
+}
+
+.footer__date {
+  margin: 0;
+}
