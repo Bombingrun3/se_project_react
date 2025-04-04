@@ -1,3 +1,16 @@
+import "./ItemCard.css";
+
+function ItemCard({ item }) {
+  return (
+    <div className="card">
+      <h2 className="card__title">{item.name}</h2>
+      <img className="card__image" src={item.link} alt={item.name}></img>
+    </div>
+  );
+}
+
+export default ItemCard;
+
 // ItemCard is a component that renders the image and title
 // for an item of clothing. Moreover, the image is an
 // interactive element, meaning that if the user clicks on it,

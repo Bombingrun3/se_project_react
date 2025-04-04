@@ -1,2 +1,18 @@
 .main {
 }
+
+.cards {
+}
+
+.cards__title {
+  margin: 0;
+  padding: 40px 0 34px 0;
+}
+
+.cards__gallery {
+  margin: 0;
+  padding: 0px;
+  display: grid;
+  gap: 21px;
+  grid-template-columns: repeat(auto-fit, minmax(323px, max-content));
+}
