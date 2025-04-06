@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__form {
+  border: 1px solid #0000004d;
+  background-color: #ffffff;
+}
+
+.modal__title {
+  margin: 0;
+}
+
+.modal__close {
+}
+
+.modal__label {
+}
+
+.modal__input {
+}
+
+.modal__radio-buttons {
+  display: flex;
+}
+
+.modal__legend {
+}
+
+.modal__label_type_radio {
+}
+
+.modal__radio-button {
+}
+
+.modal__submit-button {
+}
