@@ -16,6 +16,9 @@
   position: relative;
   padding: 28px 28px 36px;
   border-radius: 20px;
+  box-sizing: border-box;
+  max-width: 496px;
+  width: 100%;
 }
 
 .modal__title {
@@ -33,11 +36,13 @@
   top: 20px;
   right: 28px;
   background-color: transparent;
+  background-color: aqua;
   border: none;
   cursor: pointer;
 }
 
 .modal__form {
+  width: 100%;
 }
 
 .modal__input_type_text {
@@ -53,6 +58,7 @@
   padding-top: 24px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 3px;
 }
 
 .modal__input {
@@ -75,7 +81,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  padding-top: 24px;
+  padding: 24px 0 12px;
   color: #000000;
 }
 
