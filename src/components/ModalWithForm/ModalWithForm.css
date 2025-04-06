@@ -10,36 +10,98 @@
   align-items: center;
 }
 
-.modal__form {
+.modal__content {
   border: 1px solid #0000004d;
   background-color: #ffffff;
+  position: relative;
+  padding: 28px 28px 36px;
+  border-radius: 20px;
 }
 
 .modal__title {
   margin: 0;
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__close {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__form {
+}
+
+.modal__input_type_text {
+  display: flex;
+  flex-direction: column;
 }
 
 .modal__label {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal__input {
+  border: none;
+  border-bottom: 1px solid #000000;
+  width: 440px;
 }
 
 .modal__radio-buttons {
   display: flex;
+  flex-direction: column;
+  border: none;
+  gap: 8px;
+  color: #00000080;
+  padding-left: 0;
 }
 
 .modal__legend {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 24px;
+  color: #000000;
 }
 
 .modal__label_type_radio {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__radio-button {
+  cursor: pointer;
 }
 
 .modal__submit-button {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  background: #000000;
+  cursor: pointer;
+}
+
+.modal__submit-button:hover {
+  background-color: #00000099;
 }
