@@ -7,6 +7,11 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+}
+
+.card:hover {
+  opacity: 80%;
 }
 
 .card__title {

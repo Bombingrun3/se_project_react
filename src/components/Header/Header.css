@@ -16,6 +16,11 @@
   margin: 0 20px 0 auto;
   border: none;
   background: none;
+  cursor: pointer;
+}
+
+.header__add-clothes-button:hover {
+  color: #00000099;
 }
 
 .header__user-container {
