@@ -1,7 +1,9 @@
 import "./ItemModal.css";
+import "../ModalWithForm/ModalWithForm.css";
 import previewCloseButton from "../../assets/light-close-button.svg";
 
 function ItemModal({ activeModal, closeModal, card }) {
+  const hasCardData = card && card.link && card.name && card.weather;
   return (
     <div className={`modal ${activeModal === "preview" && "modal__opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -14,11 +16,17 @@ function ItemModal({ activeModal, closeModal, card }) {
             className="modal__close-image"
             src={previewCloseButton}
             alt="close button"
-          ></img>
+          />
         </button>
-        <img className="modal__image" src={card.link} alt={card.name}></img>
-        <p className="modal__item-name">{card.name}</p>
-        <p className="modal__item-temp">{card.weather}</p>
+        {hasCardData ? (
+          <>
+            <img className="modal__image" src={card.link} alt={card.name}></img>
+            <p className="modal__item-name">{card.name}</p>
+            <p className="modal__item-temp">{`Weather: ${card.weather}`}</p>
+          </>
+        ) : (
+          <p>No item selected</p>
+        )}
       </div>
     </div>
   );

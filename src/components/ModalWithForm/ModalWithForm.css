@@ -26,6 +26,9 @@
   width: 100%;
 }
 
+.modal__content_type_image {
+}
+
 .modal__title {
   margin: 0;
   font-family: "Cabinet";

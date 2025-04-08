@@ -29,7 +29,7 @@ function App() {
     <div className="app">
       <div className="app__content">
         <Header handleAddClick={handleAddClick} />
-        <Main weatherData={weatherData} />
+        <Main weatherData={weatherData} onCardClick={handleCardClick} />
         <Footer />
       </div>
       <ModalWithForm
@@ -75,7 +75,7 @@ function App() {
         </fieldset>
       </ModalWithForm>
       <ItemModal
-        activeModal={setActiveModal}
+        activeModal={activeModal}
         closeModal={closeModal}
         card={selectedCard}
       />
