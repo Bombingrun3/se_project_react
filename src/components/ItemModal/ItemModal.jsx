@@ -33,5 +33,3 @@ function ItemModal({ activeModal, closeModal, card }) {
 }
 
 export default ItemModal;
-// onClose (works the same way as the ModalWithForm)
-// The item card data that you need to render
