@@ -21,8 +21,10 @@ function ItemModal({ activeModal, closeModal, card }) {
         {hasCardData ? (
           <>
             <img className="modal__image" src={card.link} alt={card.name}></img>
-            <p className="modal__item-name">{card.name}</p>
-            <p className="modal__item-temp">{`Weather: ${card.weather}`}</p>
+            <div className="modal__item-info">
+              <p className="modal__item-name">{card.name}</p>
+              <p className="modal__item-temp">{`Weather: ${card.weather}`}</p>
+            </div>
           </>
         ) : (
           <p>No item selected</p>
