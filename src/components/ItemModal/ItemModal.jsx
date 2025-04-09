@@ -5,7 +5,7 @@ import previewCloseButton from "../../assets/light-close-button.svg";
 function ItemModal({ activeModal, closeModal, card }) {
   const hasCardData = card && card.link && card.name && card.weather;
   return (
-    <div className={`modal ${activeModal === "preview" && "modal__opened"}`}>
+    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
         <button
           className="modal__close-button"
