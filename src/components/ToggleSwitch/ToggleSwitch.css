@@ -1,0 +1,86 @@
+.toggle-switch {
+  position: relative;
+  margin-left: auto;
+  width: 56px;
+  height: 28px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 2px solid #7e7e7e;
+  overflow: hidden;
+}
+
+.toggle-switch:hover {
+  border: 2px solid black;
+}
+
+.toggle-switch__checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch__slider {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: white;
+}
+
+.toggle-switch__slider::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: black;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle-switch:hover .toggle-switch__slider::before {
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggle-switch__checkbox:checked + .toggle-switch__slider::before {
+  left: calc(100% - 28px);
+}
+
+.toggle-switch__temp-F {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  color: white;
+  margin: 0;
+  top: 3px;
+  left: 10px;
+  transition: 0.3s;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__temp-F {
+  color: black;
+}
+
+.toggle-switch__temp-C {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  right: 9px;
+  top: 3px;
+  margin: 0;
+  transition: 0.3s;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__temp-C {
+  color: white;
+}
