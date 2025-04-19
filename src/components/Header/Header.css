@@ -12,6 +12,11 @@
   text-wrap: none;
 }
 
+.header__profile-container {
+  display: flex;
+  margin-left: auto;
+}
+
 .header__add-clothes-button {
   margin: 0 20px;
   border: none;
@@ -35,3 +40,19 @@
 
 /* .header__avatar {
 } */
+
+@media (max-width: 730px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header__date-location {
+    margin: 0;
+  }
+
+  .header__profile-container {
+    margin: 0;
+  }
+}
