@@ -16,7 +16,7 @@ function Header({ handleAddClick, weatherData }) {
 
   return (
     <header className="header">
-      <Link path="/">
+      <Link to="/">
         <img className="header__logo" alt="logo" src={logo}></img>
       </Link>
       <p className="header__date-location">
@@ -30,7 +30,7 @@ function Header({ handleAddClick, weatherData }) {
       >
         + Add Clothes
       </button>
-      <Link path="/profile">
+      <Link to="/profile">
         <div className="header__user-container">
           <p className="header__username">Terrence Tegegne</p>
           <img

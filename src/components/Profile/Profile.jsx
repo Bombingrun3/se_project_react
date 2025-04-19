@@ -1,7 +1,12 @@
 import "./Profile.css";
 
 function Profile() {
-  return;
+  return (
+    <div className="profile">
+      {/* <SideBar></SideBar>
+      <ClothesSection></ClothesSection> */}
+    </div>
+  );
 }
 
 export default Profile;
