@@ -16,6 +16,12 @@
   margin-left: auto;
 }
 
+.header__profile-container Link,
+.header__profile-container a {
+  text-decoration: none;
+  color: black;
+}
+
 .header__add-clothes-button {
   margin: 0 20px;
   border: none;
