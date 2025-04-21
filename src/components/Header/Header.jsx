@@ -12,8 +12,6 @@ function Header({ handleAddClick, weatherData }) {
     day: "numeric",
   });
 
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
   return (
     <header className="header">
       <Link to="/">

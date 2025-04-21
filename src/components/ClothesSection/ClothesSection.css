@@ -1,0 +1,37 @@
+.clothes-section {
+  max-width: 1015px;
+}
+
+.clothes-section__header {
+  display: flex;
+  padding: 16px 0;
+}
+
+.clothes-section__title {
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  padding: 0 20px 0 0;
+}
+
+.clothes-section__add-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #00000099;
+}
+
+.clothes-section__add-button:hover {
+  color: #000000;
+}
+
+.clothes-section__gallery {
+  margin: 0;
+  list-style-type: none;
+  padding: 0px;
+  display: grid;
+  gap: 21px;
+  grid-template-columns: repeat(auto-fit, minmax(323px, max-content));
+}

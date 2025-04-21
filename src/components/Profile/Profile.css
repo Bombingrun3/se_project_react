@@ -1,0 +1,17 @@
+.profile {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.profile__sidebar {
+  width: 25%; /* Instead of 345px */
+  min-width: 250px; /* To prevent it from becoming too narrow */
+  flex-shrink: 1;
+}
+
+.profile__clothes-section {
+  max-width: 1015px;
+  flex-grow: 1;
+  width: 100%;
+}

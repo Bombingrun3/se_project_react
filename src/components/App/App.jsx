@@ -9,7 +9,11 @@ import Profile from "../Profile/Profile";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { coordinates, APIkey } from "../../utils/constants";
+import {
+  coordinates,
+  APIkey,
+  defaultClothingItems,
+} from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
@@ -52,7 +56,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/se_project_react/">
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -68,7 +72,18 @@ function App() {
                     onCardClick={handleCardClick}
                   />
                 }
-              />{" "}
+              />
+              {""}
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    handleAddClick={handleAddClick}
+                    handleCardClick={handleCardClick}
+                    defaultClothingItems={defaultClothingItems}
+                  />
+                }
+              ></Route>
             </Routes>
             <Footer />
           </div>

@@ -3,14 +3,16 @@ import avatar from "../../assets/avatar.svg";
 
 function SideBar() {
   return (
-    <div className="sidebar">
-      <img
-        className="sidebar__avatar"
-        alt="Terrence Tegegne"
-        src={avatar}
-      ></img>
-      <p>Terrence Tegegne</p>
-    </div>
+    <section className="sidebar">
+      <div className="sidebar__user">
+        <img
+          className="sidebar__avatar"
+          alt="Terrence Tegegne"
+          src={avatar}
+        ></img>
+        <p className="sidebar__name">Terrence Tegegne</p>
+      </div>
+    </section>
   );
 }
 
