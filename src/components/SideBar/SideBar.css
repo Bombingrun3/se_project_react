@@ -15,7 +15,6 @@
 .sidebar__name {
   margin: 0;
   padding-left: 16px;
-  text-wrap: nowrap;
   font-family: "Cabinet";
   font-weight: 700;
   font-size: 20px;

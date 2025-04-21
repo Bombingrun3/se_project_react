@@ -1,5 +1,7 @@
 .clothes-section {
   max-width: 1015px;
+  width: 100%;
+  margin-left: auto;
 }
 
 .clothes-section__header {
@@ -33,5 +35,15 @@
   padding: 0px;
   display: grid;
   gap: 21px;
-  grid-template-columns: repeat(auto-fit, minmax(323px, max-content));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(323px, 100%), max-content)
+  );
+}
+
+@media (max-width: 916px) {
+  .clothes-section__header {
+    align-items: center;
+    justify-content: center;
+  }
 }

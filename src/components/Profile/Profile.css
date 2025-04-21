@@ -5,8 +5,8 @@
 }
 
 .profile__sidebar {
-  width: 25%; /* Instead of 345px */
-  min-width: 250px; /* To prevent it from becoming too narrow */
+  width: 25%;
+  min-width: 250px;
   flex-shrink: 1;
 }
 
@@ -14,4 +14,12 @@
   max-width: 1015px;
   flex-grow: 1;
   width: 100%;
+}
+
+@media (max-width: 916px) {
+  .profile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
