@@ -21,9 +21,14 @@ function ItemModal({ activeModal, closeModal, card }) {
         {hasCardData ? (
           <>
             <img className="modal__image" src={card.link} alt={card.name}></img>
-            <div className="modal__item-info">
-              <p className="modal__item-name">{card.name}</p>
-              <p className="modal__item-temp">{`Weather: ${card.weather}`}</p>
+            <div className="modal__footer">
+              <div className="modal__item-info">
+                <p className="modal__item-name">{card.name}</p>
+                <p className="modal__item-temp">{`Weather: ${card.weather}`}</p>
+              </div>
+              <button className="modal__delete-button" type="button">
+                Delete item
+              </button>
             </div>
           </>
         ) : (

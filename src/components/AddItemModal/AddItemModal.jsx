@@ -2,20 +2,29 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
-function AddItemModal({ activeModal, closeModal, buttonText }) {
+function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
   const [nameInput, setNameInput] = useState("");
   const [imageUrlInput, setImageUrlInput] = useState("");
   const [weatherTypeInput, setWeatherTypeInput] = useState("");
 
   const handleSubmit = (event) => {
-    console.log("form submitted");
     event.preventDefault();
-    console.log({
+
+    const newItem = {
       name: nameInput,
       imageUrl: imageUrlInput,
-      weatherType: weatherTypeInput,
-    });
-    closeModal();
+      weather: weatherTypeInput,
+    };
+    onAddItem(newItem)
+      .then(() => {
+        setNameInput("");
+        setImageUrlInput("");
+        setWeatherTypeInput("");
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
   };
 
   return (
@@ -24,7 +33,7 @@ function AddItemModal({ activeModal, closeModal, buttonText }) {
         title="New Garment"
         closeModal={closeModal}
         activeModal={activeModal}
-        onSubmit={handleSubmit}
+        handleSubmit={handleSubmit}
         buttonText={buttonText}
       >
         <div className="modal__input_type_text">

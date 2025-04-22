@@ -16,6 +16,7 @@ import {
   defaultClothingItems,
 } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { addItem } from "../../utils/Api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,6 +28,23 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const [clothingItems, setClothingItems] = useState([]);
+
+  const handleAddItemSubmit = (item) => {
+    return addItem(item)
+      .then((newItem) => {
+        const newItemId = {
+          ...newItem,
+          _id: Date.now(),
+        };
+        setClothingItems([newItem, ...clothingItems]);
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
+  };
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -98,6 +116,7 @@ function App() {
             buttonText="Add Garment"
             activeModal={activeModal === "add-garment"}
             closeModal={closeModal}
+            onAddItem={handleAddItemSubmit}
           ></AddItemModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
