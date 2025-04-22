@@ -31,19 +31,27 @@ function App() {
 
   const [clothingItems, setClothingItems] = useState([]);
 
-  const handleAddItemSubmit = (item) => {
-    return addItem(item)
-      .then((newItem) => {
-        const newItemId = {
-          ...newItem,
-          _id: Date.now(),
-        };
-        setClothingItems([newItem, ...clothingItems]);
-        closeModal();
-      })
-      .catch((error) => {
-        console.error("Error adding item:", error);
-      });
+  const handleAddItemSubmit = (name, imageUrl, weather, temperature) => {
+    const newItem = {
+      _id: Date.now(),
+      name: name,
+      weather: weather,
+      imageUrl: imageUrl,
+      temperature: temperature,
+    };
+
+    setClothingItems([...clothingItems, newItem]);
+
+    closeModal();
+  };
+
+  const handleDeleteCard = (item) => {
+    console.log("Item to delete:", item);
+    console.log("Current items:", clothingItems);
+    setClothingItems(
+      clothingItems.filter((clothingItem) => clothingItem._id !== item._id)
+    );
+    closeModal();
   };
 
   const handleToggleSwitchChange = () => {
@@ -74,6 +82,10 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    setClothingItems(defaultClothingItems);
+  }, []);
+
   return (
     <BrowserRouter basename="/se_project_react/">
       <div className="app">
@@ -89,6 +101,7 @@ function App() {
                   <Main
                     weatherData={weatherData}
                     onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
                   />
                 }
               />
@@ -99,7 +112,8 @@ function App() {
                   <Profile
                     handleAddClick={handleAddClick}
                     onCardClick={handleCardClick}
-                    defaultClothingItems={defaultClothingItems}
+                    defaultClothingItems={clothingItems}
+                    handleDeleteCard={handleDeleteCard}
                   />
                 }
               ></Route>
@@ -110,6 +124,7 @@ function App() {
             activeModal={activeModal}
             closeModal={closeModal}
             card={selectedCard}
+            handleDeleteCard={handleDeleteCard}
           />
           <AddItemModal
             title="New Garment"

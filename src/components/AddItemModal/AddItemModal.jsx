@@ -15,6 +15,7 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
       imageUrl: imageUrlInput,
       weather: weatherTypeInput,
     };
+
     onAddItem(newItem)
       .then(() => {
         setNameInput("");
