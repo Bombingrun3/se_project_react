@@ -31,13 +31,12 @@ function App() {
 
   const [clothingItems, setClothingItems] = useState([]);
 
-  const handleAddItemSubmit = (name, imageUrl, weather, temperature) => {
+  const handleAddItemSubmit = (name, link, weather) => {
     const newItem = {
       _id: Date.now(),
       name: name,
+      link: link,
       weather: weather,
-      imageUrl: imageUrl,
-      temperature: temperature,
     };
 
     setClothingItems([...clothingItems, newItem]);
