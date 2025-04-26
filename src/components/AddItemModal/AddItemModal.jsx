@@ -10,6 +10,21 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (!weather) {
+      alert("Please select a weather type");
+      return;
+    }
+
+    if (!name.trim()) {
+      alert("Please enter a name");
+      return;
+    }
+
+    if (!link.trim()) {
+      alert("Please enter an image URL");
+      return;
+    }
+
     onAddItem(name, link, weather);
 
     setName("");

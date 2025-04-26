@@ -16,7 +16,7 @@ import {
   defaultClothingItems,
 } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { addItem } from "../../utils/Api";
+import { getItems, addItem, deleteItem } from "../../utils/Api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -33,22 +33,28 @@ function App() {
 
   const handleAddItemSubmit = (name, link, weather) => {
     const newItem = {
-      _id: Date.now(),
-      name: name,
-      link: link,
-      weather: weather,
+      name,
+      weather,
+      link,
     };
 
-    setClothingItems([...clothingItems, newItem]);
+    console.log("Attempting to add item:", newItem);
 
-    closeModal();
+    addItem(newItem)
+      .then((addedItem) => {
+        console.log("Successfully added item:", addedItem);
+        setClothingItems([...clothingItems, addedItem]);
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Error adding items:", error);
+      });
   };
 
   const handleDeleteCard = (item) => {
-    console.log("Item to delete:", item);
-    console.log("Current items:", clothingItems);
+    deleteItem().then(data);
     setClothingItems(
-      clothingItems.filter((clothingItem) => clothingItem._id !== item._id)
+      clothingItems.filter((clothingItem) => clothingItem.id !== item.id)
     );
     closeModal();
   };
@@ -82,7 +88,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setClothingItems(defaultClothingItems);
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching items:", error);
+      });
   }, []);
 
   return (
