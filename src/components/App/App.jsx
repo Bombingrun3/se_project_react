@@ -99,7 +99,7 @@ function App() {
   }, []);
 
   return (
-    <HashRouter basename="/se_project_react/">
+    <BrowserRouter basename="/se_project_react/">
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -147,7 +147,7 @@ function App() {
           ></AddItemModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
