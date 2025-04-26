@@ -10,11 +10,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import {
-  coordinates,
-  APIkey,
-  defaultClothingItems,
-} from "../../utils/constants";
+import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItem, deleteItem } from "../../utils/Api";
 
@@ -52,11 +48,16 @@ function App() {
   };
 
   const handleDeleteCard = (item) => {
-    deleteItem().then(data);
-    setClothingItems(
-      clothingItems.filter((clothingItem) => clothingItem.id !== item.id)
-    );
-    closeModal();
+    deleteItem(item.id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((clothingItem) => clothingItem.id !== item.id)
+        );
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Error deleting item:", error);
+      });
   };
 
   const handleToggleSwitchChange = () => {
@@ -98,7 +99,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/se_project_react/">
+    <HashRouter basename="/se_project_react/">
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -146,7 +147,7 @@ function App() {
           ></AddItemModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
