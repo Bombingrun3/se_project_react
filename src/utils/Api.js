@@ -1,12 +1,14 @@
 import { baseUrl } from "./constants";
 
+const checkResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+};
+
 export const getItems = () => {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 };
 
 export const addItem = (item) => {
@@ -16,21 +18,11 @@ export const addItem = (item) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(item),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export const deleteItem = (id) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };

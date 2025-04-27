@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -99,7 +99,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/se_project_react/">
+    <HashRouter>
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -147,7 +147,7 @@ function App() {
           ></AddItemModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
