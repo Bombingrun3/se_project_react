@@ -48,10 +48,10 @@ function App() {
   };
 
   const handleDeleteCard = (item) => {
-    deleteItem(item.id)
+    deleteItem(item._id)
       .then(() => {
         setClothingItems((prevItems) =>
-          prevItems.filter((clothingItem) => clothingItem.id !== item.id)
+          prevItems.filter((clothingItem) => clothingItem._id !== item._id)
         );
         closeModal();
       })
