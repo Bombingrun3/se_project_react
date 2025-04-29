@@ -34,10 +34,9 @@ function App() {
       weather,
       link,
     };
-
-    addItem(newItem)
+    return addItem(newItem)
       .then((addedItem) => {
-        setClothingItems([...clothingItems, addedItem]);
+        setClothingItems([addedItem, ...clothingItems]);
         closeModal();
       })
       .catch((error) => {
@@ -149,7 +148,7 @@ function App() {
           <AddItemModal
             title="New Garment"
             buttonText="Add Garment"
-            activeModal={activeModal === "add-garment"}
+            activeModal={activeModal}
             closeModal={closeModal}
             onAddItem={handleAddItemSubmit}
           ></AddItemModal>

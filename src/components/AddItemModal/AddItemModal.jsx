@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
@@ -25,13 +25,24 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
       return;
     }
 
-    onAddItem(name, link, weather);
-
-    setName("");
-    setLink("");
-    setWeather("");
-    closeModal();
+    onAddItem(name, link, weather)
+      .then(() => {
+        setName("");
+        setLink("");
+        setWeather("");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
+
+  useEffect(() => {
+    if (activeModal === "add-garment") {
+      setName("");
+      setLink("");
+      setWeather("");
+    }
+  }, [activeModal]);
 
   return (
     <div className="add-item-modal">
@@ -39,6 +50,7 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
         title="New Garment"
         closeModal={closeModal}
         activeModal={activeModal}
+        modalType="add-garment"
         handleSubmit={handleSubmit}
         buttonText={buttonText}
       >
@@ -77,6 +89,7 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
               id="hot"
               name="temp"
               value="hot"
+              checked={weather === "hot"}
               onChange={(e) => setWeather(e.target.value)}
             />
             Hot
@@ -88,6 +101,7 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
               id="warm"
               name="temp"
               value="warm"
+              checked={weather === "warm"}
               onChange={(e) => setWeather(e.target.value)}
             />
             Warm
@@ -99,6 +113,7 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
               id="cold"
               name="temp"
               value="cold"
+              checked={weather === "cold"}
               onChange={(e) => setWeather(e.target.value)}
             />
             Cold
