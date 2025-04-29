@@ -38,9 +38,11 @@ function App() {
       .then((addedItem) => {
         setClothingItems([addedItem, ...clothingItems]);
         closeModal();
+        return addedItem;
       })
       .catch((error) => {
         console.error("Error adding items:", error);
+        throw error;
       });
   };
 
