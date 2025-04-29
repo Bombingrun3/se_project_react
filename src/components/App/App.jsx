@@ -6,9 +6,9 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -22,6 +22,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -34,11 +35,8 @@ function App() {
       link,
     };
 
-    console.log("Attempting to add item:", newItem);
-
     addItem(newItem)
       .then((addedItem) => {
-        console.log("Successfully added item:", addedItem);
         setClothingItems([...clothingItems, addedItem]);
         closeModal();
       })
@@ -48,11 +46,21 @@ function App() {
   };
 
   const handleDeleteCard = (item) => {
-    deleteItem(item._id)
+    setItemToDelete(item);
+    setActiveModal("confirmation");
+  };
+
+  const handleConfirmDelete = () => {
+    if (!itemToDelete) return;
+
+    deleteItem(itemToDelete._id)
       .then(() => {
         setClothingItems((prevItems) =>
-          prevItems.filter((clothingItem) => clothingItem._id !== item._id)
+          prevItems.filter(
+            (clothingItem) => clothingItem._id !== itemToDelete._id
+          )
         );
+        setItemToDelete(null);
         closeModal();
       })
       .catch((error) => {
@@ -145,6 +153,12 @@ function App() {
             closeModal={closeModal}
             onAddItem={handleAddItemSubmit}
           ></AddItemModal>
+          <ConfirmationModal
+            activeModal={activeModal === "confirmation"}
+            closeModal={closeModal}
+            onConfirm={handleConfirmDelete}
+            itemName={itemToDelete?.name || ""}
+          ></ConfirmationModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </HashRouter>
