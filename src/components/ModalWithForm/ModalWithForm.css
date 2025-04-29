@@ -168,3 +168,45 @@
   padding: 20px 32px 0 0;
   background-color: transparent;
 }
+
+.modal__content_type_confirmation {
+  padding: 60px;
+  max-width: 670px;
+  position: relative;
+  background: white;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px;
+}
+
+.modal__confirmation-message {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__confirmation-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal__button {
+  cursor: pointer;
+  border: none;
+}
+
+.modal__button_type_cancel {
+  background: transparent;
+}
+
+.modal__button_type_delete {
+  background: transparent;
+  color: #ff4d00;
+}

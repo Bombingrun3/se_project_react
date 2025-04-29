@@ -17,24 +17,24 @@ function ConfirmationModal({ activeModal, closeModal, onConfirm, itemName }) {
             alt="close button"
           />
         </button>
-        <h2 className="modal__title">Delete Item</h2>
         <p className="modal__confirmation-message">
-          Are you sure you want to delete {itemName}?
+          Are you sure you want to delete "{itemName}"?
+          <br></br>This action is irreversible.
         </p>
         <div className="modal__confirmation-buttons">
-          <button
-            className="modal__button modal__button_type_cancel"
-            type="button"
-            onClick={closeModal}
-          >
-            Cancel
-          </button>
           <button
             className="modal__button modal__button_type_delete"
             type="button"
             onClick={onConfirm}
           >
             Yes, delete item
+          </button>
+          <button
+            className="modal__button modal__button_type_cancel"
+            type="button"
+            onClick={closeModal}
+          >
+            Cancel
           </button>
         </div>
       </div>
