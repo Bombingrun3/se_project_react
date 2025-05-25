@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -160,6 +161,10 @@ function App() {
             onConfirm={handleConfirmDelete}
             itemName={itemToDelete?.name || ""}
           ></ConfirmationModal>
+          <RegisterModal
+            activeModal={activeModal === "register"}
+            closeModal={closeModal}
+          ></RegisterModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </HashRouter>
