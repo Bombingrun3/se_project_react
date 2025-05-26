@@ -1,32 +1,36 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { register } from "../../utils/auth";
 import "./RegisterModal.css";
 
-function RegisterModal({ closeModal, buttonText, onRegister, isOpen }) {
+function RegisterModal({ closeModal, buttonText, onRegister, activeModal }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [link, setLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onRegister = ({ email, password, name, avatar: link }) => {};
+    onRegister({ email, password, name, avatar: imageUrl });
   };
 
+  const modalType = "register";
+
   useEffect(() => {
-    if (isOpen) {
+    if (activeModal === modalType) {
       setName("");
       setEmail("");
       setPassword("");
-      setLink("");
+      setImageUrl("");
     }
-  }, [isOpen]);
+  }, [activeModal]);
 
   return (
     <div className="register-modal">
       <ModalWithForm
         title="Register"
         closeModal={closeModal}
+        activeModal={activeModal}
         modalType="register"
         handleSubmit={handleSubmit}
         buttonText={buttonText}
@@ -56,7 +60,7 @@ function RegisterModal({ closeModal, buttonText, onRegister, isOpen }) {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </label>
-          <label htmlFor="Name" className="modal__label">
+          <label htmlFor="name" className="modal__label">
             Name *{" "}
             <input
               required
@@ -75,8 +79,8 @@ function RegisterModal({ closeModal, buttonText, onRegister, isOpen }) {
               type="URL"
               id="avatar"
               placeholder="Avatar URL"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
             ></input>
           </label>
         </div>
