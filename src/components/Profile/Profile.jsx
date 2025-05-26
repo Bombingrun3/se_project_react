@@ -5,7 +5,7 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 function Profile({
   handleAddClick,
   onCardClick,
-  defaultClothingItems,
+  clothingItems,
   handleDeleteCard,
 }) {
   return (
@@ -15,7 +15,7 @@ function Profile({
         className="profile__clothes-section"
         handleAddClick={handleAddClick}
         onCardClick={onCardClick}
-        defaultClothingItems={defaultClothingItems}
+        clothingItems={clothingItems}
         handleDeleteCard={handleDeleteCard}
       ></ClothesSection>
     </div>

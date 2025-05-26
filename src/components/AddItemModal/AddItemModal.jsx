@@ -4,7 +4,7 @@ import "./AddItemModal.css";
 
 function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
   const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
   const handleSubmit = (event) => {
@@ -20,15 +20,15 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
       return;
     }
 
-    if (!link.trim()) {
+    if (!imageUrl.trim()) {
       alert("Please enter an image URL");
       return;
     }
 
-    onAddItem(name, link, weather)
+    onAddItem(name, imageUrl, weather)
       .then(() => {
         setName("");
-        setLink("");
+        setImageUrl("");
         setWeather("");
       })
       .catch((err) => {
@@ -39,7 +39,7 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
   useEffect(() => {
     if (activeModal === "add-garment") {
       setName("");
-      setLink("");
+      setImageUrl("");
       setWeather("");
     }
   }, [activeModal]);
@@ -73,8 +73,8 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
               type="url"
               id="imageUrl"
               placeholder="Image URL"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
             ></input>
           </label>
         </div>
