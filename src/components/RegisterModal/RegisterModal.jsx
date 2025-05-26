@@ -11,6 +11,12 @@ function RegisterModal({ closeModal, buttonText, onRegister, activeModal }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Registration data being sent:", {
+      email,
+      password,
+      name,
+      avatar: imageUrl,
+    });
     onRegister({ email, password, name, avatar: imageUrl });
   };
 

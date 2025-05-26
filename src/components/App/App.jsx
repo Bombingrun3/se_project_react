@@ -3,7 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { register, login, checkToken, getUserInfo } from "../../utils/auth";
-import { ProtectedRoute } from "../../utils/ProtectedRoute";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -12,6 +12,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import LoginModal from "../LoginModal/LoginModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -173,6 +174,12 @@ function App() {
       });
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
   return (
     <HashRouter>
       <div className="app">
@@ -184,6 +191,7 @@ function App() {
               handleAddClick={handleAddClick}
               handleRegisterClick={handleRegisterClick}
               handleLoginClick={handleLoginClick}
+              handleLogout={handleLogout}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
               currentUser={currentUser}
@@ -207,7 +215,7 @@ function App() {
                     isLoggedIn={isLoggedIn}
                     handleAddClick={handleAddClick}
                     onCardClick={handleCardClick}
-                    defaultClothingItems={clothingItems}
+                    clothingItems={clothingItems}
                     handleDeleteCard={handleDeleteCard}
                   />
                 }
@@ -235,13 +243,13 @@ function App() {
             itemName={itemToDelete?.name || ""}
           ></ConfirmationModal>
           <RegisterModal
-            activeModal={activeModal === "register"}
+            activeModal={activeModal}
             closeModal={closeModal}
             buttonText="Sign Up"
             onRegister={handleRegister}
           ></RegisterModal>
           <LoginModal
-            activeModal={activeModal === "login"}
+            activeModal={activeModal}
             closeModal={closeModal}
             onLogin={handleLogin}
             buttonText="Log in"

@@ -16,8 +16,7 @@ function LoginModal({ activeModal, closeModal, buttonText }) {
 
   useEffect(() => {
     if (activeModal === "login") {
-      setName("");
-      setLink("");
+      setPassword("");
       setEmail("");
     }
   }, [activeModal]);

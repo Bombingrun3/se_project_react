@@ -7,13 +7,15 @@ export function register({ email, password, name, avatar }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name, avatar }),
-  }).then((response) => {
+  }).then(async (response) => {
+    const data = await response.json();
     if (response.ok) {
-      return response.json();
+      return data;
     }
-    return Promise.reject(`Error: ${response.status}`);
+    return Promise.reject(data);
   });
 }
+
 export function login({ email, password }) {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",

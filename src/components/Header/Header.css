@@ -4,9 +4,6 @@
   padding-bottom: 28px;
 }
 
-/* .header__logo {
-} */
-
 .header__date-location {
   margin-left: 24px;
 }
@@ -43,8 +40,25 @@
   margin: 0;
 }
 
-/* .header__avatar {
-} */
+.header__auth-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 16px;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.header__button:hover {
+  opacity: 0.6;
+}
 
 @media (max-width: 730px) {
   .header {
