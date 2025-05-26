@@ -7,10 +7,17 @@ function Profile({
   onCardClick,
   clothingItems,
   handleDeleteCard,
+  currentUser,
+  handleLogout,
+  firstLetter,
 }) {
   return (
     <div className="profile">
-      <SideBar className="profile__sidebar"></SideBar>
+      <SideBar
+        className="profile__sidebar"
+        currentUser={currentUser}
+        firstLetter={firstLetter}
+      ></SideBar>
       <ClothesSection
         className="profile__clothes-section"
         handleAddClick={handleAddClick}

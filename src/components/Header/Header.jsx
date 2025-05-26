@@ -14,6 +14,7 @@ function Header({
   handleRegisterClick,
   handleLoginClick,
   handleLogout,
+  firstLetter,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -47,7 +48,7 @@ function Header({
                 <img
                   className="header__avatar"
                   alt="avatar"
-                  src={currentUser?.avatar || avatar}
+                  src={currentUser?.avatar || firstLetter}
                 ></img>
               </div>
             </Link>

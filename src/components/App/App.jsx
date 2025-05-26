@@ -35,6 +35,10 @@ function App() {
 
   const [clothingItems, setClothingItems] = useState([]);
 
+  const firstLetter = currentUser?.name
+    ? currentUser.name[0].toUpperCase()
+    : "U";
+
   const handleAddItemSubmit = (name, imageUrl, weather) => {
     const newItem = {
       name,
@@ -195,6 +199,7 @@ function App() {
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
               currentUser={currentUser}
+              firstLetter={firstLetter}
             />
             <Routes>
               <Route
@@ -217,6 +222,9 @@ function App() {
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     handleDeleteCard={handleDeleteCard}
+                    handleLogout={handleLogout}
+                    currentUser={currentUser}
+                    firstLetter={firstLetter}
                   />
                 }
               />

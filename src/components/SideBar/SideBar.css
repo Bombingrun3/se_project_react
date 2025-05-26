@@ -5,11 +5,14 @@
   display: flex;
   justify-content: left;
   align-items: center;
+  margin-bottom: 24px;
 }
 
 .sidebar__avatar {
   width: 56px;
   height: 56px;
+  border: 1px solid #00000080;
+  border-radius: 50px;
 }
 
 .sidebar__name {
@@ -18,4 +21,25 @@
   font-family: "Cabinet";
   font-weight: 700;
   font-size: 20px;
+}
+
+.sidebar__button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  color: #00000080;
+  font-family: "Cabinet";
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.sidebar__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar__button:hover {
+  opacity: 0.6;
 }
