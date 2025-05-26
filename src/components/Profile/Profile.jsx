@@ -17,6 +17,7 @@ function Profile({
         className="profile__sidebar"
         currentUser={currentUser}
         firstLetter={firstLetter}
+        handleLogout={handleLogout}
       ></SideBar>
       <ClothesSection
         className="profile__clothes-section"
