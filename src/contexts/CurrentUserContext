@@ -1,0 +1,10 @@
+import { createContext } from "react";
+
+const CurrentUserContext = createContext({
+  currentUser: {},
+  handleLogin: ({ email, password }) => {},
+  handleLogout: () => {},
+  firstLetter: "U",
+});
+
+export default CurrentUserContext;

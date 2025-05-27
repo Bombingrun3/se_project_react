@@ -1,17 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { login } from "../../utils/auth";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import "./LoginModal.css";
 
 function LoginModal({ activeModal, closeModal, buttonText }) {
+  const { currentUser, handleLogin } = useContext(CurrentUserContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    closeModal();
-    login(email, password);
+    console.log("Email:", email, "Password:", password);
+    handleLogin({ email, password })
+      .then(() => {
+        closeModal();
+        navigate("/profile");
+      })
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
@@ -33,7 +43,7 @@ function LoginModal({ activeModal, closeModal, buttonText }) {
       >
         <div className="modal__input_type_text">
           <label htmlFor="email" className="modal__label">
-            Email*{" "}
+            Email*
             <input
               required
               className="modal__input"
@@ -45,7 +55,7 @@ function LoginModal({ activeModal, closeModal, buttonText }) {
             ></input>
           </label>
           <label htmlFor="password" className="modal__label">
-            Password*{" "}
+            Password*
             <input
               required
               className="modal__input"
