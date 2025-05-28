@@ -53,3 +53,35 @@ export function updateProfile({ name, avatar }) {
     return Promise.reject(`Error: ${response.status}`);
   });
 }
+
+export function addCardLike(id) {
+  const token = getToken();
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`Error: ${response.status}`);
+  });
+}
+
+export function removeCardLike(id) {
+  const token = getToken();
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`Error: ${response.status}`);
+  });
+}
