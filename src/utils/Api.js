@@ -36,3 +36,20 @@ export const deleteItem = (id) => {
     },
   }).then(checkResponse);
 };
+
+export function updateProfile({ name, avatar }) {
+  const token = getToken();
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`Error: ${response.status}`);
+  });
+}

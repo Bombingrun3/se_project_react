@@ -1,21 +1,30 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import "./EditProfileModal.css";
 
-function EditProfileModal() {
-  const { currentUser } = useContext(CurrentUserContext);
+function EditProfileModal({ closeModal, activeModal, buttonText }) {
+  const { currentUser, updateUser } = useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
-  //   useEffect(() => {
-  //     if (activeModal === "edit") {
-  //       setName("");
-  //       setImageUrl("");
-  //     }
-  //   }, [activeModal]);
+  useEffect(() => {
+    if (activeModal === "edit") {
+      setName(currentUser.name);
+      setImageUrl(currentUser.avatar);
+    }
+  }, [activeModal, currentUser]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    return updateUser({ name, avatar: imageUrl })
+      .then(() => {
+        closeModal();
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="edit-profile-modal">
@@ -36,7 +45,7 @@ function EditProfileModal() {
               type="text"
               id="name"
               placeholder="Name"
-              value={currentUser.name}
+              value={name}
               onChange={(e) => setName(e.target.value)}
             ></input>
           </label>
@@ -48,7 +57,7 @@ function EditProfileModal() {
               type="Url"
               id="avatar"
               placeholder="Image Url"
-              value={currentUser.imageUrl}
+              value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
             ></input>
           </label>

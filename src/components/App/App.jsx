@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-
 import "./App.css";
 import { register, login, checkToken } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -17,7 +16,7 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { getItems, addItem, deleteItem } from "../../utils/Api";
+import { getItems, addItem, deleteItem, updateProfile } from "../../utils/Api";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
@@ -186,12 +185,30 @@ function App() {
     setCurrentUser(null);
   };
 
-  const handleEditProfile = () => {};
+  const handleEditProfileClick = () => {
+    setActiveModal("edit");
+  };
+
+  const updateUser = ({ name, avatar }) => {
+    return updateProfile({ name, avatar })
+      .then(() => {
+        setCurrentUser({ ...currentUser, name, avatar });
+      })
+      .catch((error) => {
+        console.error("Error updating user:", error);
+      });
+  };
 
   return (
     <HashRouter>
       <CurrentUserContext.Provider
-        value={{ currentUser, handleLogin, handleLogout, firstLetter }}
+        value={{
+          currentUser,
+          handleLogin,
+          handleLogout,
+          firstLetter,
+          updateUser,
+        }}
       >
         <div className="app">
           <CurrentTemperatureUnitContext.Provider
@@ -228,6 +245,7 @@ function App() {
                       handleDeleteCard={handleDeleteCard}
                       handleLogout={handleLogout}
                       firstLetter={firstLetter}
+                      handleEditProfileClick={handleEditProfileClick}
                     />
                   }
                 />
@@ -267,8 +285,8 @@ function App() {
             <EditProfileModal
               activeModal={activeModal}
               closeModal={closeModal}
-              buttonText="Log in"
-              handleEditProfile={handleEditProfile}
+              buttonText="Save changes"
+              handleEditProfileClick={handleEditProfileClick}
             />
           </CurrentTemperatureUnitContext.Provider>
         </div>

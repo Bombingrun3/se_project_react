@@ -7,13 +7,13 @@ function Profile({
   onCardClick,
   clothingItems,
   handleDeleteCard,
-  handleEditProfile,
+  handleEditProfileClick,
 }) {
   return (
     <div className="profile">
       <SideBar
         className="profile__sidebar"
-        handleEditProfile={handleEditProfile}
+        handleEditProfileClick={handleEditProfileClick}
       ></SideBar>
       <ClothesSection
         className="profile__clothes-section"

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 
-function SideBar({ handleEditProfile }) {
+function SideBar({ handleEditProfileClick }) {
   const { currentUser, handleLogout, firstLetter } =
     useContext(CurrentUserContext);
   return (
@@ -23,7 +23,7 @@ function SideBar({ handleEditProfile }) {
         <button
           className="sidebar__button"
           type="button"
-          onClick={handleEditProfile}
+          onClick={handleEditProfileClick}
         >
           Change profile data
         </button>
