@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import { register, login, checkToken, getUserInfo } from "../../utils/auth";
+import { register, login, checkToken } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -13,6 +13,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -111,8 +112,7 @@ function App() {
       checkToken(token)
         .then((data) => {
           setIsLoggedIn(true);
-          setCurrentUser({ ...data, avatar: null });
-          // setCurrentUser(data);
+          setCurrentUser(data);
         })
         .catch((err) => {
           console.error(err);
@@ -147,7 +147,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setIsLoggedIn(true);
-          return getUserInfo();
+          return checkToken();
         }
       })
       .then((userData) => {
@@ -168,7 +168,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setIsLoggedIn(true);
-          return getUserInfo();
+          return checkToken();
         }
       })
       .then((userData) => {
@@ -186,14 +186,16 @@ function App() {
     setCurrentUser(null);
   };
 
+  const handleEditProfile = () => {};
+
   return (
     <HashRouter>
-      <div className="app">
-        <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        >
-          <CurrentUserContext.Provider
-            value={{ currentUser, handleLogin, handleLogout, firstLetter }}
+      <CurrentUserContext.Provider
+        value={{ currentUser, handleLogin, handleLogout, firstLetter }}
+      >
+        <div className="app">
+          <CurrentTemperatureUnitContext.Provider
+            value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
             <div className="app__content">
               <Header
@@ -262,9 +264,15 @@ function App() {
               closeModal={closeModal}
               buttonText="Log in"
             />
-          </CurrentUserContext.Provider>
-        </CurrentTemperatureUnitContext.Provider>
-      </div>
+            <EditProfileModal
+              activeModal={activeModal}
+              closeModal={closeModal}
+              buttonText="Log in"
+              handleEditProfile={handleEditProfile}
+            />
+          </CurrentTemperatureUnitContext.Provider>
+        </div>
+      </CurrentUserContext.Provider>
     </HashRouter>
   );
 }

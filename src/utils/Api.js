@@ -12,12 +12,7 @@ const getToken = () => {
 };
 
 export const getItems = () => {
-  const token = getToken();
-  return fetch(`${baseUrl}/items`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(checkResponse);
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 };
 
 export const addItem = (item) => {

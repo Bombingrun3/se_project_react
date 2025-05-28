@@ -1,7 +1,7 @@
-const BASE_URL = "http://localhost:3001";
+import { baseUrl } from "./constants";
 
 export function register({ email, password, name, avatar }) {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export function register({ email, password, name, avatar }) {
 }
 
 export function login({ email, password }) {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,22 +39,7 @@ export function login({ email, password }) {
 }
 
 export function checkToken(token) {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(`Error: ${response.status}`);
-  });
-}
-export function getUserInfo() {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
