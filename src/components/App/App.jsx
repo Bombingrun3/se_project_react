@@ -16,7 +16,14 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { getItems, addItem, deleteItem, updateProfile } from "../../utils/Api";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  updateProfile,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/Api";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
@@ -199,6 +206,24 @@ function App() {
       });
   };
 
+  const handleCardLike = ({ id, isLiked }) => {
+    !isLiked
+      ? addCardLike(id)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : removeCardLike(id)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   return (
     <HashRouter>
       <CurrentUserContext.Provider
@@ -230,6 +255,7 @@ function App() {
                       weatherData={weatherData}
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
+                      handleCardLike={handleCardLike}
                     />
                   }
                 />
@@ -242,6 +268,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
+                      handleCardLike={handleCardLike}
                       handleDeleteCard={handleDeleteCard}
                       handleLogout={handleLogout}
                       firstLetter={firstLetter}

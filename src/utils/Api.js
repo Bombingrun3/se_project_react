@@ -46,12 +46,7 @@ export function updateProfile({ name, avatar }) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(`Error: ${response.status}`);
-  });
+  }).then(checkResponse);
 }
 
 export function addCardLike(id) {
@@ -62,12 +57,7 @@ export function addCardLike(id) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(`Error: ${response.status}`);
-  });
+  }).then(checkResponse);
 }
 
 export function removeCardLike(id) {
@@ -78,10 +68,5 @@ export function removeCardLike(id) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(`Error: ${response.status}`);
-  });
+  }).then(checkResponse);
 }

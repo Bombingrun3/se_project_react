@@ -14,16 +14,31 @@
   opacity: 80%;
 }
 
-.card__title {
+.card__header-container {
   margin: 0;
   position: absolute;
   top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.card__title {
   background-color: #fff;
   font-family: "Cabinet";
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
   padding: 2px 12px;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 15px;
+}
+.card__like-button_liked {
+  background-color: red;
 }
 
 .card__image {
