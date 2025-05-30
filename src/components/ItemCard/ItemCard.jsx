@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import notLiked from "../../assets/like-button/default-like.svg";
+import Liked from "../../assets/like-button/filled-like.svg";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, handleCardLike }) {
@@ -14,19 +16,25 @@ function ItemCard({ item, onCardClick, handleCardLike }) {
         <h2 className="card__title">{item.name}</h2>
         <button
           className={
-            item.likes.includes(currentUser.id)
-              ? "card__like-button_liked"
-              : "card__like-button"
+            !currentUser ? "card__like-button_hidden" : "card__like-button"
           }
           type="button"
           onClick={(event) => {
             event.stopPropagation();
             handleCardLike({
               id: item._id,
-              isLiked: item.likes.includes(currentUser.id),
+              isLiked: currentUser && item.likes.includes(currentUser._id),
             });
           }}
-        ></button>
+        >
+          <img
+            src={
+              currentUser && item.likes.includes(currentUser._id)
+                ? Liked
+                : notLiked
+            }
+          ></img>
+        </button>
       </div>
       <img className="card__image" src={item.imageUrl} alt={item.name}></img>
     </li>

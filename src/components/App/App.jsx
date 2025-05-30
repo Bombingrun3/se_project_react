@@ -153,7 +153,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setIsLoggedIn(true);
-          return checkToken();
+          return checkToken(data.token);
         }
       })
       .then((userData) => {
@@ -174,7 +174,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setIsLoggedIn(true);
-          return checkToken();
+          return checkToken(data.token);
         }
       })
       .then((userData) => {
@@ -210,6 +210,8 @@ function App() {
     !isLiked
       ? addCardLike(id)
           .then((updatedCard) => {
+            console.log(updatedCard);
+
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
@@ -217,6 +219,7 @@ function App() {
           .catch((err) => console.log(err))
       : removeCardLike(id)
           .then((updatedCard) => {
+            console.log(updatedCard);
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );

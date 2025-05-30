@@ -27,7 +27,7 @@ function ClothesSection({
       <ul className="clothes-section__gallery">
         {clothingItems
           .filter((item) => {
-            return currentUser._id === item.owner;
+            return currentUser && currentUser._id === item.owner;
           })
 
           .map((item) => {
