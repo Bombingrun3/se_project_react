@@ -24,7 +24,7 @@ WTWR is a responsive React-based weather app that helps users decide what to wea
 
 ## Link to Backend
 
-[Click Here!](http://wtwr.backend/)
+[Link to Repository on GitHub](https://github.com/Bombingrun3/se_project_express)
 
 ### Future Implementations
 
