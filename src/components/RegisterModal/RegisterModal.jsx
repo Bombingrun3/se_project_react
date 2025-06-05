@@ -85,6 +85,9 @@ function RegisterModal({ closeModal, buttonText, onRegister, activeModal }) {
             ></input>
           </label>
         </div>
+        <button className="modal__button_type_login" type="button">
+          or Log in
+        </button>
       </ModalWithForm>
     </div>
   );
