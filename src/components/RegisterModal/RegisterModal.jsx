@@ -92,7 +92,7 @@ function RegisterModal({
           </label>
         </div>
         <button
-          className="modal__button_type_login"
+          className="modal__button_alternate"
           type="button"
           onClick={switchToLogin}
         >

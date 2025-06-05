@@ -68,7 +68,7 @@ function LoginModal({ activeModal, closeModal, buttonText, switchToRegister }) {
           </label>
         </div>
         <button
-          className="modal__button_type_register"
+          className="modal__button_alternate"
           type="button"
           onClick={switchToRegister}
         >

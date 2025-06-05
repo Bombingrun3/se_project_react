@@ -213,24 +213,16 @@
   color: #ff4d00;
 }
 
-.modal__button_type_login {
+.modal__button_alternate {
   background-color: transparent;
   border: none;
   padding-right: 12px;
   cursor: pointer;
+  position: absolute;
+  left: 113px;
+  bottom: 40px;
 }
 
-.modal__button_type_login:hover {
-  color: #00000099;
-}
-
-.modal__button_type_register {
-  background-color: transparent;
-  border: none;
-  padding-right: 12px;
-  cursor: pointer;
-}
-
-.modal__button_type_register:hover {
+.modal__button_alternate:hover {
   color: #00000099;
 }
