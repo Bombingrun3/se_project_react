@@ -99,6 +99,16 @@ function App() {
     setSelectedCard(card);
   };
 
+  const switchToRegister = () => {
+    closeModal();
+    setActiveModal("register");
+  };
+
+  const switchToLogin = () => {
+    closeModal();
+    setActiveModal("login");
+  };
+
   const closeModal = () => {
     setActiveModal("");
   };
@@ -306,11 +316,13 @@ function App() {
               closeModal={closeModal}
               buttonText="Sign Up"
               onRegister={handleRegister}
+              switchToLogin={switchToLogin}
             ></RegisterModal>
             <LoginModal
               activeModal={activeModal}
               closeModal={closeModal}
               buttonText="Log in"
+              switchToRegister={switchToRegister}
             />
             <EditProfileModal
               activeModal={activeModal}

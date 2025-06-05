@@ -5,7 +5,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import "./LoginModal.css";
 
-function LoginModal({ activeModal, closeModal, buttonText }) {
+function LoginModal({ activeModal, closeModal, buttonText, switchToRegister }) {
   const { currentUser, handleLogin } = useContext(CurrentUserContext);
 
   const [email, setEmail] = useState("");
@@ -67,6 +67,13 @@ function LoginModal({ activeModal, closeModal, buttonText }) {
             ></input>
           </label>
         </div>
+        <button
+          className="modal__button_type_register"
+          type="button"
+          onClick={switchToRegister}
+        >
+          or Sign Up
+        </button>
       </ModalWithForm>
     </div>
   );

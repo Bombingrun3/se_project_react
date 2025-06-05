@@ -3,7 +3,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { register } from "../../utils/auth";
 import "./RegisterModal.css";
 
-function RegisterModal({ closeModal, buttonText, onRegister, activeModal }) {
+function RegisterModal({
+  closeModal,
+  buttonText,
+  onRegister,
+  activeModal,
+  switchToLogin,
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,7 +91,11 @@ function RegisterModal({ closeModal, buttonText, onRegister, activeModal }) {
             ></input>
           </label>
         </div>
-        <button className="modal__button_type_login" type="button">
+        <button
+          className="modal__button_type_login"
+          type="button"
+          onClick={switchToLogin}
+        >
           or Log in
         </button>
       </ModalWithForm>

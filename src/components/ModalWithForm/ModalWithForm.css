@@ -212,3 +212,25 @@
   background: transparent;
   color: #ff4d00;
 }
+
+.modal__button_type_login {
+  background-color: transparent;
+  border: none;
+  padding-right: 12px;
+  cursor: pointer;
+}
+
+.modal__button_type_login:hover {
+  color: #00000099;
+}
+
+.modal__button_type_register {
+  background-color: transparent;
+  border: none;
+  padding-right: 12px;
+  cursor: pointer;
+}
+
+.modal__button_type_register:hover {
+  color: #00000099;
+}
