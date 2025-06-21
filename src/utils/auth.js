@@ -1,3 +1,4 @@
+import { checkResponse } from "./Api";
 import { baseUrl } from "./constants";
 
 export function register({ email, password, name, avatar }) {
@@ -24,12 +25,7 @@ export function login({ email, password }) {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Error: ${response.status}`);
-    })
+    .then(checkResponse)
     .then((data) => {
       if (data.token) {
         localStorage.setItem("jwt", data.token);
@@ -45,10 +41,5 @@ export function checkToken(token) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(`Error: ${response.status}`);
-  });
+  }).then(checkResponse);
 }

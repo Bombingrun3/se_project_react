@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { register } from "../../utils/auth";
 import "./RegisterModal.css";
 
 function RegisterModal({
@@ -44,7 +43,7 @@ function RegisterModal({
       >
         <div className="modal__input_type_text">
           <label htmlFor="email" className="modal__label">
-            Email*{" "}
+            Email*
             <input
               required
               className="modal__input"
@@ -56,7 +55,7 @@ function RegisterModal({
             ></input>
           </label>
           <label htmlFor="password" className="modal__label">
-            Password*{" "}
+            Password*
             <input
               required
               className="modal__input"
@@ -68,7 +67,7 @@ function RegisterModal({
             ></input>
           </label>
           <label htmlFor="name" className="modal__label">
-            Name *{" "}
+            Name *
             <input
               required
               className="modal__input"
@@ -80,10 +79,10 @@ function RegisterModal({
             ></input>
           </label>
           <label htmlFor="avatar" className="modal__label">
-            Avatar URL{" "}
+            Avatar URL
             <input
               className="modal__input"
-              type="URL"
+              type="url"
               id="avatar"
               placeholder="Avatar URL"
               value={imageUrl}

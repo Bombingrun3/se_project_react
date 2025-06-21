@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 import "./LoginModal.css";
 

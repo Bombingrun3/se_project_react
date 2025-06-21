@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 import { register, login, checkToken } from "../../utils/auth";
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { coordinates, APIkey } from "../../utils/constants";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  updateProfile,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/Api";
+
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -13,18 +23,9 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
-import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import {
-  getItems,
-  addItem,
-  deleteItem,
-  updateProfile,
-  addCardLike,
-  removeCardLike,
-} from "../../utils/Api";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
+import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -157,11 +158,12 @@ function App() {
 
   const handleRegister = ({ email, password, name, avatar }) => {
     register({ email, password, name, avatar })
-      .then((data) => {
+      .then(() => {
         return login({ email, password });
       })
       .then((data) => {
         if (data.token) {
+          localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           return checkToken(data.token);
         }
@@ -183,6 +185,7 @@ function App() {
     return login({ email, password })
       .then((data) => {
         if (data.token) {
+          localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           return checkToken(data.token);
         }
@@ -220,8 +223,6 @@ function App() {
     !isLiked
       ? addCardLike(id)
           .then((updatedCard) => {
-            console.log(updatedCard);
-
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
@@ -258,7 +259,6 @@ function App() {
                 handleRegisterClick={handleRegisterClick}
                 handleLoginClick={handleLoginClick}
                 weatherData={weatherData}
-                isLoggedIn={isLoggedIn}
               />
               <Routes>
                 <Route
