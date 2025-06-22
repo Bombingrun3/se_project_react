@@ -55,23 +55,23 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
         buttonText={buttonText}
       >
         <div className="modal__input_type_text">
-          <label htmlFor="name" className="modal__label">
+          <label className="modal__label">
             Name{" "}
             <input
               className="modal__input"
               type="text"
-              id="name"
+              id="add-name"
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></input>
           </label>
-          <label htmlFor="imageUrl" className="modal__label">
+          <label className="modal__label">
             Image{" "}
             <input
               className="modal__input"
               type="url"
-              id="imageUrl"
+              id="add-imageUrl"
               placeholder="Image URL"
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
@@ -82,11 +82,11 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
           <legend className="modal__legend" required>
             Select the weather type:
           </legend>
-          <label htmlFor="hot" className="modal__label_type_radio">
+          <label className="modal__label_type_radio">
             <input
               className="modal__radio-button"
               type="radio"
-              id="hot"
+              id="add-hot"
               name="temp"
               value="hot"
               checked={weather === "hot"}
@@ -94,11 +94,11 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
             />
             Hot
           </label>
-          <label htmlFor="warm" className="modal__label_type_radio">
+          <label className="modal__label_type_radio">
             <input
               className="modal__radio-button"
               type="radio"
-              id="warm"
+              id="add-warm"
               name="temp"
               value="warm"
               checked={weather === "warm"}
@@ -106,11 +106,11 @@ function AddItemModal({ activeModal, closeModal, buttonText, onAddItem }) {
             />
             Warm
           </label>
-          <label htmlFor="cold" className="modal__label_type_radio">
+          <label className="modal__label_type_radio">
             <input
               className="modal__radio-button"
               type="radio"
-              id="cold"
+              id="add-cold"
               name="temp"
               value="cold"
               checked={weather === "cold"}

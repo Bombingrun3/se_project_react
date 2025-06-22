@@ -37,25 +37,25 @@ function EditProfileModal({ closeModal, activeModal, buttonText }) {
         buttonText={buttonText}
       >
         <div className="modal__input_type_text">
-          <label htmlFor="name" className="modal__label">
+          <label className="modal__label">
             Name *
             <input
               required
               className="modal__input"
               type="text"
-              id="name"
+              id="edit-name"
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></input>
           </label>
-          <label htmlFor="avatar" className="modal__label">
+          <label className="modal__label">
             Avatar *
             <input
               required
               className="modal__input"
               type="Url"
-              id="avatar"
+              id="edit-avatar"
               placeholder="Image Url"
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}

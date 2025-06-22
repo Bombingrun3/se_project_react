@@ -42,25 +42,25 @@ function LoginModal({ activeModal, closeModal, buttonText, switchToRegister }) {
         buttonText={buttonText}
       >
         <div className="modal__input_type_text">
-          <label htmlFor="email" className="modal__label">
+          <label className="modal__label">
             Email*
             <input
               required
               className="modal__input"
               type="email"
-              id="email"
+              id="login-email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </label>
-          <label htmlFor="password" className="modal__label">
+          <label className="modal__label">
             Password*
             <input
               required
               className="modal__input"
               type="password"
-              id="password"
+              id="login-password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
